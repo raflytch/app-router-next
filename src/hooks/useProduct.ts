@@ -1,16 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { getData, getDataById } from "@/services/products.service";
+import { Product } from "@/types/product";
 
 export const useAllProducts = () => {
-  return useQuery({
+  return useQuery<Product[], Error>({
     queryKey: ["products"],
-    queryFn: getData,
+    queryFn: () => getData(),
   });
 };
 
-export const useProductById = (id: number) => {
-  return useQuery({
+export const useProductById = (id: string) => {
+  return useQuery<Product, Error>({
     queryKey: ["product", id],
     queryFn: () => getDataById(id),
+    enabled: !!id,
   });
 };

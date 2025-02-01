@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const BASE_URL = process.env.NEXT_BACKEND_URI;
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URI;
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
